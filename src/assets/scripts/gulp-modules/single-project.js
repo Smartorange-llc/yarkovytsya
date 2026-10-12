@@ -383,6 +383,11 @@ function incredibleSlider() {
   const container = document.querySelector('.incredible-slider');
   let images = container.getAttribute('data-images').split(',');
 
+  // WP template stretches imgs to 200% so a single image spans both halves; with 2+ images each half has its own image
+  if (images.length > 1) {
+    container.classList.add('incredible-slider--split');
+  }
+
   if (images.length % 2 !== 0) {
     images.push(images[images.length - 1]);
   }
