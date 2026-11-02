@@ -1,7 +1,6 @@
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Toastify from 'toastify-js';
-import { useState } from './modules/helpers/helpers';
 import Swiper, { Navigation } from 'swiper';
 
 
@@ -33,42 +32,6 @@ function initTranslations()  {
 }
 
 const t = initTranslations();
-
-const [flatImage, setFlatImage, subscribeFlatImage] = useState('');
-
-subscribeFlatImage((image) => {
-    document.querySelector('[data-flat-image-container]').src = image;
-});
-
-
-document.body.addEventListener('click', function switchFlatImage(evt) {
-    const target = evt.target.closest('[data-flat-image]');
-    if (!target) return;
-    document.querySelectorAll('[data-flat-image]').forEach((el) => {
-        el.classList.toggle('active', el === target);
-    });
-    setFlatImage(target.dataset.flatImage);
-
-    if (target.dataset.flatImage === 'floor_svg') {
-        document.querySelectorAll('.single-flat__image-block-wrap img').forEach((img) => {
-            img.style.opacity = 0;
-        });
-        document.querySelectorAll('.single-flat__image-block-wrap svg').forEach((img) => {
-            img.style.opacity = 1;
-        });
-    } else {
-        document.querySelectorAll('.single-flat__image-block-wrap img').forEach((img) => {
-            img.style.opacity = 1;
-        });
-        document.querySelectorAll('.single-flat__image-block-wrap svg').forEach((img) => {
-            img.style.opacity = 0;
-        });
-
-    }
-});
-
-document.querySelector('[data-flat-image]').click();
-
 
 //data-pdf-download
 
